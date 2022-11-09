@@ -40,6 +40,12 @@ public class Bus extends Car {
     }
 
     @Override
+    public boolean service() {
+        System.out.println("Автобус " + getBrand() + " " + getModel() + " в диагностике не требуется");
+        return true;
+    }
+
+    @Override
     public String pitStop() {
         return "еду на пит-стоп";
     }

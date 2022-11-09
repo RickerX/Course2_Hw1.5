@@ -1,4 +1,6 @@
+import Other.Data;
 import Transport.Autosport.*;
+import Transport.Car;
 import Transport.Drivers.Driver;
 
 public class Main {
@@ -59,9 +61,35 @@ public class Main {
         ivan.driveCar(volvoTruck);
         Driver<Bus> oleg = new Driver<>("Олег", "15", "права категории D");
         oleg.driveCar(mersedesBus);
+        separation();
+        boolean success = Data.validate("som","reka","reka");
+        if (success) {
+            System.out.println("Данные валидны!");
+        } else {
+            System.out.println("Данные не валидны!");
+        }
+        separation();
+        service(volvo,audi,mersedes,bmw,volvoBus,audiBus,mersedesBus,bmwBus,volvoTruck,audiTruck,mersedesTruck,bmwTruck);
 
 
 
 
+    }
+
+    public static void service(Car... cars) {
+        for (Car car : cars) {
+            serviceCars(car);
+        }
+
+    }
+
+    private static void serviceCars(Car car) {
+        if (car.service()) {
+            try {
+                throw new RuntimeException("Автомобиль не прошел Т/О " + " " + car.getBrand() + " " + car.getModel());
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
