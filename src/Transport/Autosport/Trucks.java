@@ -41,6 +41,11 @@ public class Trucks extends Car {
     }
 
     @Override
+    public boolean service() {
+        return Math.random() > 0.75;
+    }
+
+    @Override
     public String pitStop() {
         return "Еду на пит-стоп";
     }

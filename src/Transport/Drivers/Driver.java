@@ -10,7 +10,7 @@ public class Driver < T extends Car > {
     public Driver(String fio, String experience, String driversLicense) {
         this.fio = validOrDefaultFio(fio);
         this.experience = validOrDefaultExperience(experience);
-        this.driversLicense = validOrDefaultDriversLicense(driversLicense);
+        setDriversLicense(driversLicense);
     }
 
     public String getFio() {
@@ -26,7 +26,9 @@ public class Driver < T extends Car > {
     }
 
     public void setExperience(String experience) {
-        this.experience = experience;
+        if (driversLicense == null) {
+            throw new IllegalArgumentException("Необходимо указать категорию прав!");
+        }
     }
 
     public String getDriversLicense() {
@@ -65,5 +67,7 @@ public class Driver < T extends Car > {
         System.out.println("Водитель " + getFio() + " водит легковую машину " + car.getBrand() + " " + car.getModel() +
                 " и будет учавствовать в заезде");
     }
+
+
 
 }

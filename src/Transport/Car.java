@@ -57,4 +57,5 @@ public abstract class Car implements Competing{
         return "Бренд: " + getBrand() + '\'' + " модель: " + getModel() + '\'' + " объем двигателя: " +getEngineVolume() + " литра. " ;
     }
 
+    public abstract boolean service();
 }
